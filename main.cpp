@@ -123,8 +123,47 @@ int main(int argc, char const *argv[])
         {
             ofs << line << "\n";
         }
+    } else if (command == "undo")
+    {
+        if (argc < 3) {
+            std::cerr << "Invalid arguments.\n";
+            return 1;
+        }
+        int line_num_done{};
+        try
+        {
+            line_num_done = std::stoi(argv[2]);
+        }
+        catch (const std::invalid_argument &e)
+        {
+            std::cerr << "Invalid arguments.\n";
+            return 1;
+        }
+        std::ifstream ifs{TODOLIST_FILEPATH};
+        std::string line{};
+        std::vector<std::string> lines{};
+        int line_num{1};
+        while (std::getline(ifs, line))
+        {
+            if (line_num == line_num_done)
+            {
+                std::string::size_type pos = line.find("- [x]");
+                if (pos != std::string::npos)
+                {
+                    line.replace(pos, 5, "- [ ]");
+                }
+            }
+            lines.push_back(line);
+            ++line_num;
+        }
+        std::ofstream ofs{TODOLIST_FILEPATH, std::ios::trunc};
+        for (const auto &line : lines)
+        {
+            ofs << line << "\n";
+        }
     } else {
         std::cerr << "Invalid command.\n";
+        return 1;
     }
     return 0;
 }

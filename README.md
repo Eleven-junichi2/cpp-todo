@@ -20,23 +20,22 @@ cpp-todo add "practice coding C++"
 cpp-todo list
 1| [ ] study math
 2| [ ] practice coding C++
-cpp-todo rename 0 "study mathematics"
+cpp-todo rename 1 "study mathematics"
 cpp-todo list
 1| [ ] study mathematics
 2| [ ] practice coding C++
-cpp-todo done 1
-cpp-todo done "practice coding C++"
+cpp-todo done 2
 cpp-todo list
 1| [x] study mathematics
 2| [x] practice coding C++
-cpp-todo undo 0
+cpp-todo undo 1
 cpp-todo list
 1| [ ] study mathematics
 2| [x] practice coding C++
-cpp-todo delete 1
+cpp-todo delete 2
 cpp-todo list
 1| [ ] study mathematics
-cpp-todo remove 0
+cpp-todo remove 1
 cpp-todo list
 
 ```
